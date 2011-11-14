@@ -14,6 +14,10 @@ from pyjamas.JSONService import JSONProxy
 class schoolbell:
 
     def make_gui(self):
+        header = HorizontalPanel()
+        header.add(Image('icons/bell.png', StyleName='logo'))
+        header.add(Label('Schoolbell', StyleName='title'))
+
         self.status = Label()
         self.text_area = TextArea()
         self.text_area.setText("""foobar""")
@@ -25,33 +29,21 @@ class schoolbell:
         self.method_list.setVisibleItemCount(1)
         for method in self.methods:
             self.method_list.addItem(method)
-        self.method_list.setSelectedIndex(0)
+        self.method_list.setSelectedIndex(1)
 
         method_panel = HorizontalPanel()
         method_panel.add(Label("Remote string method to call: "))
         method_panel.add(self.method_list)
         method_panel.setSpacing(8)
 
-        self.button_cgi = Button("Send to CGI", self)
-        self.button_server = Button("Send to Server", self)
+        self.button_rpc = Button("Send to RPC", self)
 
         buttons = HorizontalPanel()
-        buttons.add(self.button_cgi)
-        buttons.add(self.button_server)
+        buttons.add(self.button_rpc)
         buttons.setSpacing(8)
 
         panel = VerticalPanel()
-
-        header = HorizontalPanel()
-        header.add(Image('icons/bell.png', StyleName='logo'))
-        header.add(Label('Schoolbell', StyleName='title'))
         panel.add(header)
-#            HTML("""
-#            <div id="header">
-#                <img id="logo" src="icons/bell.png"/>
-#                <span id="title">Schoolbell</span>
-#            </div>
-#            """))
         panel.add(self.text_area)
         panel.add(method_panel)
         panel.add(buttons)
@@ -62,8 +54,7 @@ class schoolbell:
 
     def onModuleLoad(self):
         self.methods = [ "Echo", "Reverse", "UPPERCASE", "lowercase", "nonexistent" ]
-        self.remote_cgi = EchoServiceCGI()
-        self.remote_server = EchoServiceServer()
+        self.remote_rpc = EchoServiceRPC()
         self.make_gui()
 
 
@@ -72,10 +63,8 @@ class schoolbell:
         method = self.methods[self.method_list.getSelectedIndex()]
         text = self.text_area.getText()
 
-        if sender == self.button_cgi:
-            remote = self.remote_cgi
-        elif sender == self.button_server:
-            remote = self.remote_server
+        if sender == self.button_rpc:
+            remote = self.remote_rpc
 
         if method == "Echo":
             id = remote.echo(text, self)
@@ -109,13 +98,10 @@ class schoolbell:
                                 (code, message))
 
 
-class EchoServiceCGI(JSONProxy):
+class EchoServiceRPC(JSONProxy):
     def __init__(self):
-        JSONProxy.__init__(self, "/services/EchoService.py", ["echo", "reverse", "uppercase", "lowercase", "nonexistant"])
+        JSONProxy.__init__(self, "/RPC2", ["echo", "reverse", "uppercase", "lowercase", "nonexistant"])
 
-class EchoServiceServer(JSONProxy):
-    def __init__(self):
-        JSONProxy.__init__(self, "http://localhost:8080", ["echo", "reverse", "uppercase", "lowercase", "nonexistant"])
 
 if __name__ == '__main__':
     # for pyjd, set up a web server and load the HTML from there:
