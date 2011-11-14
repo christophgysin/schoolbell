@@ -1,0 +1,24 @@
+.header {
+    margin-bottom: 10px;
+}
+
+.logo {
+    margin-right: 10px;
+}
+
+.title {
+    font-size: 20pt;
+    margin-bottom: 10px;
+}
+
+body {
+    background: #eeeeee
+}
+
+.gwt-Table > tbody, .gwt-Image {
+    display: block; /* HTML5 effects panel alignment fix, and footer removal fix for images */
+}
+
+.gwt-Image {
+    display: block;
+}
