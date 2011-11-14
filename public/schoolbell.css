@@ -1,18 +1,44 @@
-.header {
+table.header {
     margin-bottom: 10px;
 }
 
-.logo {
+img.logo {
     margin-right: 10px;
 }
 
-.title {
-    font-size: 20pt;
+div.title {
+    font-size: 35px;
     margin-bottom: 10px;
+}
+
+table.alarms {
+    font-size: 11px;
+    border: 0px;
+    border-collapse: collapse;
+}
+
+td.tablecell {
+    border-color: #999;
+    padding: 0px;
+    padding-right: 6px;
+    padding-left: 6px;
+}
+
+td.header {
+    font-weight: bold;
+    background-color: #bbb;
+    padding-right: 16px;
+    padding-top: 2px;
+    padding-bottom: 2px;
+}
+
+td.noborder {
+    border: 0px;
 }
 
 body {
     background: #eeeeee
+    font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
 }
 
 .gwt-Table > tbody, .gwt-Image {
