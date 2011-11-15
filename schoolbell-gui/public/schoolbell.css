@@ -12,14 +12,13 @@ div.title {
 }
 
 table.alarms {
-    font-size: 11px;
     border: 0px;
     border-collapse: collapse;
 }
 
 td.tablecell {
     border-color: #999;
-    padding: 0px;
+    padding: 2px;
     padding-right: 6px;
     padding-left: 6px;
 }
@@ -28,7 +27,7 @@ td.header {
     font-weight: bold;
     background-color: #bbb;
     padding-right: 16px;
-    padding-top: 2px;
+    padding-top: 4px;
     padding-bottom: 2px;
 }
 
@@ -36,9 +35,26 @@ td.noborder {
     border: 0px;
 }
 
+table.changes {
+    border: 0px;
+}
+
+td.changes-image {
+    background: #687BA4;
+    padding: 4px;
+    padding-left: 8px;
+    padding-right: 8px;
+}
+
+td.changes-text {
+    padding: 6px;
+    background: #D9DEE8;
+}
+
 body {
     background: #eeeeee
     font-family: Tahoma, Verdana, Arial, Helvetica, sans-serif;
+    font-size: 11px;
 }
 
 .gwt-Table > tbody, .gwt-Image {
