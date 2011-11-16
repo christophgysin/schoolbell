@@ -1,7 +1,10 @@
 default: check build run
 
+PYLINT := pylint -i yes -E
+
 check:
-	@pylint -E schoolbell-gui/schoolbell.py
+	@(cd schoolbell-gui && $(PYLINT) *.py)
+	@(cd schoolbelld && $(PYLINT) *.py)
 
 build:
 	@(cd schoolbell-gui && pyjsbuild -o ../html schoolbell)
