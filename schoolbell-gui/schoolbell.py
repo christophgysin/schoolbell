@@ -3,8 +3,10 @@ import pyjd
 from pyjamas.ui.RootPanel import RootPanel
 from pyjamas.ui.VerticalPanel import VerticalPanel
 from pyjamas.ui.HorizontalPanel import HorizontalPanel
+from pyjamas.ui.TabPanel import TabPanel
 from pyjamas.ui.Label import Label
 from pyjamas.ui.Image import Image
+from pyjamas.ui.Button import Button
 
 from alarmwidget import AlarmWidget
 
@@ -14,17 +16,34 @@ class schoolbell:
         pass
 
     def make_gui(self):
+        panel = VerticalPanel(StyleName='mainpanel')
+        panel.add(self.make_header())
+        panel.add(self.make_tabs())
+        RootPanel().add(panel)
+
+    def make_header(self):
         header = HorizontalPanel(StyleName='header')
         header.add(Image('icons/bell.png', StyleName='logo'))
         header.add(Label('Schoolbell', StyleName='title'))
+        return header
 
+    def make_tabs(self):
+        tabs = TabPanel()
+        tabs.add(self.make_alarm_widget(), 'alarms')
+        tabs.add(self.make_test_widget(), 'test')
+        tabs.selectTab(0)
+        return tabs
+
+    def make_alarm_widget(self):
         alarms = AlarmWidget()
-
         panel = VerticalPanel()
-        panel.add(header)
         panel.add(alarms.panel)
+        return panel
 
-        RootPanel().add(panel)
+    def make_test_widget(self):
+        panel = VerticalPanel()
+        panel.add(Button('test'))
+        return panel
 
     def onModuleLoad(self):
         self.make_gui()
