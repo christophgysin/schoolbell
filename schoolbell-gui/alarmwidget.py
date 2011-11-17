@@ -13,7 +13,7 @@ from pyjamas import DOM
 
 from alarms import Alarms
 
-class AlarmWidget(VerticalPanel):
+class AlarmWidget:
     weekday_name = { 0: 'Mo', 1: 'Di', 2: 'Mi', 3: 'Do', 4: 'Fr', 5: 'Sa', 6: 'So' }
 
     def __init__(self):
@@ -21,7 +21,7 @@ class AlarmWidget(VerticalPanel):
         self.make_table()
         self.fill_table()
         self.status = Label()
-        self.make_panel()
+        self.panel = self.make_panel()
 
     def make_panel(self):
         message = Label(
@@ -44,11 +44,13 @@ class AlarmWidget(VerticalPanel):
         self.changes.add(msgbox)
         self.changes.add(button)
 
-        self.panel = VerticalPanel()
-        self.panel.setSpacing(10)
-        self.panel.add(self.table)
-        self.panel.add(self.status)
-        self.panel.add(self.changes)
+        panel = VerticalPanel()
+        panel.setSpacing(10)
+        panel.add(self.table)
+        panel.add(self.status)
+        panel.add(self.changes)
+
+        return panel
 
     def make_table(self):
         self.table = FlexTable(StyleName='alarms')

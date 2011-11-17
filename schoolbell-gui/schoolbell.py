@@ -9,6 +9,7 @@ from pyjamas.ui.Image import Image
 from pyjamas.ui.Button import Button
 
 from alarmwidget import AlarmWidget
+from testwidget import TestWidget
 
 class schoolbell:
 
@@ -36,14 +37,11 @@ class schoolbell:
 
     def make_alarm_widget(self):
         alarms = AlarmWidget()
-        panel = VerticalPanel()
-        panel.add(alarms.panel)
-        return panel
+        return alarms.panel
 
     def make_test_widget(self):
-        panel = VerticalPanel()
-        panel.add(Button('test'))
-        return panel
+        test = TestWidget()
+        return test.panel
 
     def onModuleLoad(self):
         self.make_gui()

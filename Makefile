@@ -12,5 +12,8 @@ build:
 html/index.html:
 	@ln -sf schoolbell.html html/index.html
 
-run: html/index.html
+html/alarms.json.conf:
+	@cp alarms.json.conf html
+
+run: html/index.html html/alarms.json.conf
 	@schoolbelld/schoolbelld.py html

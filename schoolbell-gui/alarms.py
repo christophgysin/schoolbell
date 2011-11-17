@@ -1,17 +1,10 @@
-from pyjamas.JSONService import JSONProxy
-
-class SchoolbellRPC(JSONProxy):
-    methods = [ 'get', 'add', 'remove', 'test', 'reverse' ]
-
-    def __init__(self):
-        JSONProxy.__init__(self, "/RPC2", SchoolbellRPC.methods)
+from rpc import SchoolbellRPC
 
 class AlarmsGetHandler:
     def __init__(self, alarms):
         self.alarms = alarms
 
     def onRemoteResponse(self, response, request_info):
-        print("Response: %s %s %s" % (request_info.method, request_info.handler, response))
         self.alarms.alarms = response
         self.alarms.widget.fill_table()
 
@@ -35,7 +28,8 @@ class Alarms:
         self.remote.get(AlarmsGetHandler(self))
 
     def save(self):
-        pass
+        # pylint: disable=E1101
+        self.remote.set(self.alarms)
 
     def add(self, alarm):
         self.alarms.append(alarm)
