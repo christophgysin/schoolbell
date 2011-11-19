@@ -1,6 +1,6 @@
 from rpc import SchoolbellRPC
 
-class AlarmsGetHandler:
+class AlarmsGetHandler(object):
     def __init__(self, alarms):
         self.alarms = alarms
 
@@ -16,7 +16,7 @@ class AlarmsGetHandler:
             code = errobj['code']
             print("JSONRPC Error %s: %s" % (code, message))
 
-class Alarms:
+class Alarms(object):
     def __init__(self, widget):
         self.widget = widget
         self.alarms = []

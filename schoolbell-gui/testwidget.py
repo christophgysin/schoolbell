@@ -4,7 +4,7 @@ from pyjamas.ui.Button import Button
 
 from rpc import SchoolbellRPC
 
-class TestHandler:
+class TestHandler(object):
     def __init__(self, duration):
         self.duration = duration
         self.rpc = SchoolbellRPC()
@@ -15,7 +15,7 @@ class TestHandler:
         duration = getSelectedValue(self.duration)
         self.rpc.test(duration)
 
-class TestWidget:
+class TestWidget(object):
     def __init__(self):
         self.panel = self.make_panel()
 

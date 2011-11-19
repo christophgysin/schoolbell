@@ -6,7 +6,7 @@ from jsonrpclib.SimpleJSONRPCServer import SimpleJSONRPCServer
 from requesthandler import RequestHandler
 from alarms import Alarms, AlarmsRPC
 
-def test(self, duration):
+def test(duration):
     print('test! (%ds)' % duration)
 
 if __name__ == '__main__':

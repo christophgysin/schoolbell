@@ -1,7 +1,7 @@
 import json
 from pprint import pprint
 
-class AlarmsRPC:
+class AlarmsRPC(object):
     def __init__(self, alarms):
         self.alarms = alarms
 
@@ -15,7 +15,7 @@ class AlarmsRPC:
         self.alarms.alarms = alarms
         self.alarms.save()
 
-class Alarms:
+class Alarms(object):
     config = 'alarms.json.conf'
 
     def __init__(self):

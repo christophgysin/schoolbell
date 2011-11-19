@@ -10,4 +10,5 @@ class RequestHandler(SimpleJSONRPCRequestHandler, SimpleHTTPRequestHandler):
         if self.path == '/RPC2':
             SimpleJSONRPCRequestHandler.do_POST(self)
         else:
+            __pychecker__ = 'no-classattr'
             SimpleHTTPRequestHandler.do_POST(self)

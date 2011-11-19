@@ -11,7 +11,7 @@ from pyjamas.ui.Button import Button
 from alarmwidget import AlarmWidget
 from testwidget import TestWidget
 
-class schoolbell:
+class schoolbell(object):
 
     def __init__(self):
         pass

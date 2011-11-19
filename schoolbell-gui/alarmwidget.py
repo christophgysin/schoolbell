@@ -13,7 +13,7 @@ from pyjamas import DOM
 
 from alarms import Alarms
 
-class AlarmWidget:
+class AlarmWidget(object):
     weekday_name = { 0: 'Mo', 1: 'Di', 2: 'Mi', 3: 'Do', 4: 'Fr', 5: 'Sa', 6: 'So' }
 
     def __init__(self):

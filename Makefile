@@ -1,10 +1,13 @@
-default: check build run
+default: lint check build run
 
 PYLINT := pylint -i yes -E
 
-check:
+lint:
 	@(cd schoolbell-gui && $(PYLINT) *.py)
 	@(cd schoolbelld && $(PYLINT) *.py)
+
+check:
+	@pychecker --quiet --only schoolbelld/*.py
 
 build:
 	@(cd schoolbell-gui && pyjsbuild -o ../html schoolbell)
